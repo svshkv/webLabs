@@ -2,7 +2,7 @@
     display: grid;
     
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 50px 350px 50px;
+    grid-template-rows: 15% 350px 15%;
     grid-template-areas:
         "h h h h h h h h h h h h"
         "m m c c c c c c c c c c"
@@ -14,6 +14,12 @@ div {
 
 p { 
     text-align: center
+}
+
+img {
+ max-width: 100%;
+ height: auto;
+ width: auto\9; /* для ie8 */
 }
 
 .header {
