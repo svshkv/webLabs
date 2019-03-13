@@ -11,7 +11,7 @@ html, body {
 }
 
 .header-descript {
-	background: #563d7c;
+	background: #000000;
 	color: white;
 }
 
@@ -31,12 +31,15 @@ html, body {
 	margin-top: 10px;
 }
 .image-form-container .left-photo {
-	background: #eee;
+
 	height: 300px;
+	background-image: url("https://pp.userapi.com/QGICBUzNAnXESmVNsy-lHJWZKUTZvagyX64Jqw/kNkdynJhajg.jpg?ava=1");
+	background-position: center;
+    background-repeat: no-repeat;
 }
 
 .sale {
-	background: #563d7c;
+	background: #000000;
 	margin-top: 10px;
 	color: white;
 }
@@ -57,7 +60,7 @@ html, body {
 
 .trigger, .response {
 	text-align: center;
-	height: 50px;
+	height: 80px;
 	border: 1px solid #eee;
 }
 
@@ -65,5 +68,20 @@ html, body {
 	margin-top: 10px;
 	height: 50px;
 	text-align: center;
-	background: #eee;
+	background: #000000;
+
 }
+
+.glyphicon-phone, .glyphicon-send, .glyphicon-globe, .glyphicon-time {
+	font-size: 40px;
+	text-align: center;
+	margin-top: 10;
+}
+
+
+
+
+
+
+
+
