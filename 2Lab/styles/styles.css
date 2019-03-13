@@ -37,6 +37,9 @@ html, body {
 	background-position: center;
     background-repeat: no-repeat;
 }
+.price {
+	margin-top: 10px;
+}
 
 .sale {
 	background: #000000;
@@ -47,6 +50,14 @@ html, body {
 .sale .title {
 	font-size: 28px;
 	text-align: center;
+
+}
+
+.sale .sale-description {
+	text-align: center;
+	margin-top: 5px;
+	font-style: italic;
+	margin-bottom: 5px;
 }
 
 .triggers {
@@ -69,7 +80,10 @@ html, body {
 	height: 50px;
 	text-align: center;
 	background: #000000;
-
+    padding: 1rem;
+}
+.footer-copyright {
+	text-align: center;
 }
 
 .glyphicon-phone, .glyphicon-send, .glyphicon-globe, .glyphicon-time {
