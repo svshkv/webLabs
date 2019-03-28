@@ -2,16 +2,34 @@
 <meta charset="utf-8">
 <title>QQ</title>
 <script>
-window.onload=function(){
-var img=new Image();
-img.onload=function(){run()};
-img.src='1pic.png';
-function run(){
-var ctx=document.getElementById('cnv').getContext('2d');
-ctx.drawImage(img,0,0);
-ctx.textAlign = "center";
-ctx.font = "20px Arial";
-ctx.fillStyle = "black";
-ctx.fillText("15 120",50,57);};
+	window.onload = function() 
+	{
+		var img = new Image();
+		img.onload = function() 
+		{
+			run()
+		};
+		img.src = '1pic.png';
+		var img2 = new Image();
+		var img3 = new Image();
+		var img4 = new Image();
+		img2.src = '2pic.png';
+		img3.src = '2pic.png';
+		img4.src = '1pic.png';
+		function run()
+		{
+			var ctx = document.getElementById('cnv').getContext('2d');
+			ctx.drawImage(img, 0, 0);
+			ctx.drawImage(img2, img.width, 0);
+			ctx.drawImage(img3, 0, img.height);
+			ctx.drawImage(img4, img.width, img.height);
+			ctx.textAlign = "center";
+			ctx.font = "20px Arial";
+			ctx.fillStyle = "red";
+			ctx.textBaseline = "middle";
+			var text = "тут текстs";
+			var textLenght = ctx.measureText(text);
+			ctx.fillText(textLenght.width, img.width, img.height);
+		};
 }
 </script><canvas id=cnv width=500 height=500></canvas>
