@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>QQ</title>
+<script>
+window.onload=function(){
+var img=new Image();
+img.onload=function(){run()};
+img.src='1pic.png';
+function run(){
+var ctx=document.getElementById('cnv').getContext('2d');
+ctx.drawImage(img,0,0);
+ctx.textAlign = "center";
+ctx.font = "20px Arial";
+ctx.fillStyle = "black";
+ctx.fillText("15 120",50,57);};
+}
+</script><canvas id=cnv width=500 height=500></canvas>

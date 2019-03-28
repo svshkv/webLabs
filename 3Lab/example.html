@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+ 
+<canvas id="myCanvas" width="300" height="200" style="border:2px solid #d3d3d3;">
+Обновите браузер</canvas>
+<br><br>
+<input type="text" id="nashinput">                    
+<button type="submit" id="poslat">Введите текст</button>
+<br>
+
+ 
+<script>
+document.getElementById('poslat').onclick = function(){
+var tekt = document.getElementById('nashinput').value;
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ 
+// Create gradient
+var imageObj1 = new Image();
+imageObj1.src = "1pic.png"
+imageObj1.src = "1pic.png"
+		imageObj1.onload = function() {
+		   ctx.drawImage(imageObj1, 0, 0, 300, 150); 
+		}
+ 
+// Fill with gradient
+ctx.fillStyle = imageObj1;
+ctx.fillRect(0,0,300,200);
+ 
+ctx.font = "30px Arial";
+ctx.strokeText(tekt,70,100);
+};
+</script>
+ 
+</body>
+</html>

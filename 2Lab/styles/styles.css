@@ -7,6 +7,7 @@ html, body {
 
 
 .container {
+	height: 100%;
 	width: 1000px;
 }
 
@@ -32,10 +33,10 @@ html, body {
 }
 .image-form-container .left-photo {
 
-	height: 300px;
 	background-image: url("https://pp.userapi.com/QGICBUzNAnXESmVNsy-lHJWZKUTZvagyX64Jqw/kNkdynJhajg.jpg?ava=1");
 	background-position: center;
     background-repeat: no-repeat;
+    height: 300px;
 }
 .price {
 	margin-top: 10px;
@@ -71,16 +72,15 @@ html, body {
 
 .trigger, .response {
 	text-align: center;
-	height: 80px;
 	border: 1px solid #eee;
 }
 
 .footer {
 	margin-top: 10px;
-	height: 50px;
 	text-align: center;
 	background: #000000;
     padding: 1rem;
+    
 }
 .footer-copyright {
 	text-align: center;
