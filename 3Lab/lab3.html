@@ -1,120 +1,129 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>QQ</title>
+
 <script>
-	window.onload = function() 
-	{
-		var img = new Image();
-		var text = "1";
-		// img.onload = function() 
-		// {
-		// 	run()
-		// };
-		let url = 'https://example.com';
-
-		var apiUrl = null;
-		const http = new XMLHttpRequest()
-
-		http.open("GET", "https://cors.io/?https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=ru")
-		http.send()
-
-		http.onload = function() {
-			if (http.status != 200) {
-
-			} else {
-				text = JSON.parse(http.responseText);
-				text = text["quoteText"]
-			}
-			
-			run()
-		}
-		var rands = "jj ";
-		for( var image, array = [], i = 1; i <= 4; i++ ){
-			var rand = 1 - 0.5 + Math.random() * (73 - 1 + 1)
-    		rand = Math.round(rand);
-    		rands += " " + rand.toString();
-    		if (rand >= 10) {
-				image = new Image;
-		    	image.src = "https://ribalych.ru/wp-content/uploads/2017/12/krasota_0" + rand + ".jpg";
-		    	array.push( image );
-		    } else {
-				image = new Image;
-			   	image.src = "https://ribalych.ru/wp-content/uploads/2017/12/krasota_00" + rand + ".jpg";
-			   	array.push( image );
-			}    
-		};
-		//img.src = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=xml&lang=ru';
-
-		function run()
-		{
-			var ctx = document.getElementById('cnv').getContext('2d');
-			var canvas = document.getElementById('cnv');
-			ctx.drawImage(array[0], 0, 0, 225, 225);
-			ctx.drawImage(array[1], 225, 0, 225, 225);
-			ctx.drawImage(array[2], 0, 225, 225, 225);
-			ctx.drawImage(array[3], 225, 225, 225, 225);
-			ctx.textAlign = "center";
-			ctx.font = "20px Arial";
-			ctx.fillStyle = "red";
-			ctx.textBaseline = "middle";
-			//var text = "тут текст будет";
-			var textLenght = ctx.measureText(text).width;
-			if (textLenght > 400) {
-				var countOfLines = ~~(textLenght / 400) + 1;
-			}
-			switch (countOfLines) {
-				case 1:
-				    marginTop = canvas.height / 2;
-				    break;
-				case 2:
-				    marginTop = canvas.height / 2 - 12.5;
-				    break;
-				case 3:
-				    marginTop = canvas.height / 2 - 25;
-				    break;
-				case 4:
-				    marginTop = canvas.height / 2 - 12.5;
-				    break;
-				case 5:
-				    marginTop = canvas.height / 2 - 50;
-				    break;
-				case 6:
-				    alert( 'Маловато' );
-				    break;
-				case 7:
-				    alert( 'Маловато' );
-				    break;
-				case 8:
-				    alert( 'Маловато' );
-				    break;
-				default:
-				    alert( 'Я таких значений не знаю' );
-			}
-			var lineHeight = 25;
-		    var marginLeft = canvas.width / 2;
-		    //var marginTop = canvas.height / 2;
-			wrapText(ctx, text, marginLeft, marginTop, 400, lineHeight);
-			//ctx.fillText(countOfLines + " " + textLenght, canvas.width / 2, canvas.height / 2);
-		};
-
-	function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight)
+    window.onload = function()
     {
-        var words = text.split(" ");
-        var countWords = words.length;
-        var line = "";
-        for (var n = 0; n < countWords; n++) {
-            var testLine = line + words[n] + " ";
-            var testWidth = context.measureText(testLine).width;
-            if (testWidth > maxWidth) {
-                context.fillText(line, marginLeft, marginTop);
-                line = words[n] + " ";
-                marginTop += lineHeight;
+        var text = "1";
+        const http = new XMLHttpRequest()
+
+
+        http.open("GET", "https://cors.io/?https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=ru")
+        http.send()
+
+        http.onload = function() {
+            if (http.status != 200) {
+            } else {
+                text = JSON.parse(http.responseText);
+                text = text["quoteText"]
             }
-            else {
-                line = testLine;
-            }
+            run()
         }
-        context.fillText(line, marginLeft, marginTop);
+
+        var rands = "jj ";
+        for( var image, array = [], i = 1; i <= 4; i++ ){
+            var rand = 1 - 0.5 + Math.random() * (73 - 1 + 1)
+            rand = Math.round(rand);
+            if (rand >= 10) {
+                image = new Image;
+                image.crossOrigin = 'anonymous';
+                image.src = "https://ribalych.ru/wp-content/uploads/2017/12/krasota_0" + rand + ".jpg";
+                array.push( image );
+            } else {
+                image = new Image;
+                image.crossOrigin = 'anonymous';
+                image.src = "https://ribalych.ru/wp-content/uploads/2017/12/krasota_00" + rand + ".jpg";
+                array.push( image );
+            }
+        };
+        //img.src = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=xml&lang=ru';
+
+        function run()
+        {
+            var ctx = document.getElementById('cnv').getContext('2d');
+            var canvas = document.getElementById('cnv');
+            ctx.drawImage(array[0], 0, 0, 225, 225);
+            ctx.drawImage(array[1], 225, 0, 225, 225);
+            ctx.drawImage(array[2], 0, 225, 225, 225);
+            ctx.drawImage(array[3], 225, 225, 225, 225);
+            ctx.textAlign = "center";
+            ctx.font = "20px Arial";
+            ctx.fillStyle = "red";
+            ctx.textBaseline = "middle";
+            //var text = "тут текст будет";
+            var textLenght = ctx.measureText(text).width;
+            if (textLenght > 400) {
+                var countOfLines = ~~(textLenght / 400) + 1;
+            }
+            switch (countOfLines) {
+                case 1:
+                    marginTop = canvas.height / 2;
+                    break;
+                case 2:
+                    marginTop = canvas.height / 2 - 12.5;
+                    break;
+                case 3:
+                    marginTop = canvas.height / 2 - 25;
+                    break;
+                case 4:
+                    marginTop = canvas.height / 2 - 37.5;
+                    break;
+                case 5:
+                    marginTop = canvas.height / 2 - 50;
+                    break;
+                case 6:
+                    marginTop = canvas.height / 2 - 62.5;
+                    break;
+                case 7:
+                    marginTop = canvas.height / 2 - 75;
+                    break;
+                case 8:
+                    marginTop = canvas.height / 2 - 87.5;
+                    break;
+                default:
+                    alert( 'Я таких значений не знаю' );
+            }
+            var lineHeight = 25;
+            var marginLeft = canvas.width / 2;
+            //var marginTop = canvas.height / 2;
+            var link = document.getElementById("download");
+            var link = document.createElement('a');
+            link.innerHTML = 'download image';
+            link.addEventListener('click', function(ev) {
+                link.href = canvas.toDataURL();
+                link.download = "mypainting.png";
+            }, false);
+            document.body.appendChild(link);
+            wrapText(ctx, text, marginLeft, marginTop, 400, lineHeight);
+            //ctx.fillText(countOfLines + " " + textLenght, canvas.width / 2, canvas.height / 2);
+        };
+
+        function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight)
+        {
+            var words = text.split(" ");
+            var countWords = words.length;
+            var line = "";
+            for (var n = 0; n < countWords; n++) {
+                var testLine = line + words[n] + " ";
+                var testWidth = context.measureText(testLine).width;
+                if (testWidth > maxWidth) {
+                    context.fillText(line, marginLeft, marginTop);
+                    line = words[n] + " ";
+                    marginTop += lineHeight;
+                }
+                else {
+                    line = testLine;
+                }
+            }
+            context.fillText(line, marginLeft, marginTop);
+        }
+
+        function download()
+        {
+            link.href = canvas.toDataURL();
+            link.download = "mypainting.png";
+            document.body.appendChild(link);
+        }
     }
-}
 </script><canvas id=cnv width=450 height=450></canvas>
