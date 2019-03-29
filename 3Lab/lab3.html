@@ -62,11 +62,37 @@
 			if (textLenght > 400) {
 				var countOfLines = ~~(textLenght / 400) + 1;
 			}
+			switch (countOfLines) {
+				case 1:
+				    marginTop = canvas.height / 2;
+				    break;
+				case 2:
+				    marginTop = canvas.height / 2 - 12.5;
+				    break;
+				case 3:
+				    marginTop = canvas.height / 2 - 25;
+				    break;
+				case 4:
+				    marginTop = canvas.height / 2 - 12.5;
+				    break;
+				case 5:
+				    marginTop = canvas.height / 2 - 50;
+				    break;
+				case 6:
+				    alert( 'Маловато' );
+				    break;
+				case 7:
+				    alert( 'Маловато' );
+				    break;
+				case 8:
+				    alert( 'Маловато' );
+				    break;
+				default:
+				    alert( 'Я таких значений не знаю' );
+			}
 			var lineHeight = 25;
-		    /*если мы знаем высоту текста, то мы можем
-		     предположить, что высота строки должна быть именно такой*/
 		    var marginLeft = canvas.width / 2;
-		    var marginTop = canvas.height / 2;
+		    //var marginTop = canvas.height / 2;
 			wrapText(ctx, text, marginLeft, marginTop, 400, lineHeight);
 			//ctx.fillText(countOfLines + " " + textLenght, canvas.width / 2, canvas.height / 2);
 		};
