@@ -6,9 +6,8 @@
     window.onload = function()
     {
         var text = "1";
+
         const http = new XMLHttpRequest()
-
-
         http.open("GET", "https://cors.io/?https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=ru")
         http.send()
 
@@ -18,10 +17,9 @@
                 text = JSON.parse(http.responseText);
                 text = text["quoteText"]
             }
-            run()
+            run();
         }
 
-        var rands = "jj ";
         for( var image, array = [], i = 1; i <= 4; i++ ){
             var rand = 1 - 0.5 + Math.random() * (73 - 1 + 1)
             rand = Math.round(rand);
@@ -38,18 +36,33 @@
             }
         };
         //img.src = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=xml&lang=ru';
+        function getWidth() {
+        	var rand = 150 - 0.5 + Math.random() * (300 - 150 + 1)
+            rand = Math.round(rand);
+            return rand
+        }
+
+        function getHeight() {
+        	var rand = 150 - 0.5 + Math.random() * (300 - 150 + 1)
+            rand = Math.round(rand);
+            return rand
+        }
 
         function run()
         {
+        	var widthFor1Row = getWidth();
+        	var heightFor1Row = getHeight();
             var ctx = document.getElementById('cnv').getContext('2d');
             var canvas = document.getElementById('cnv');
-            ctx.drawImage(array[0], 0, 0, 225, 225);
-            ctx.drawImage(array[1], 225, 0, 225, 225);
-            ctx.drawImage(array[2], 0, 225, 225, 225);
-            ctx.drawImage(array[3], 225, 225, 225, 225);
+            ctx.drawImage(array[0], 0, 0, widthFor1Row, heightFor1Row);
+            ctx.drawImage(array[1], widthFor1Row, 0, 450 - widthFor1Row, heightFor1Row);
+            ctx.drawImage(array[2], 0, heightFor1Row, widthFor1Row, 450 - heightFor1Row);
+            ctx.drawImage(array[3], widthFor1Row, heightFor1Row, 450 - widthFor1Row, 450 - heightFor1Row);
             ctx.textAlign = "center";
             ctx.font = "20px Arial";
-            ctx.fillStyle = "red";
+            ctx.fillStyle = "white";
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
             ctx.textBaseline = "middle";
             //var text = "тут текст будет";
             var textLenght = ctx.measureText(text).width;
@@ -86,8 +99,12 @@
             }
             var lineHeight = 25;
             var marginLeft = canvas.width / 2;
-            //var marginTop = canvas.height / 2;
-            var link = document.getElementById("download");
+            createButton(canvas);
+            wrapText(ctx, text, marginLeft, marginTop, 400, lineHeight);
+            //ctx.fillText(countOfLines + " " + textLenght, canvas.width / 2, canvas.height / 2);
+        };
+
+        function createButton(canvas) {
             var link = document.createElement('a');
             link.innerHTML = 'download image';
             link.addEventListener('click', function(ev) {
@@ -95,9 +112,7 @@
                 link.download = "mypainting.png";
             }, false);
             document.body.appendChild(link);
-            wrapText(ctx, text, marginLeft, marginTop, 400, lineHeight);
-            //ctx.fillText(countOfLines + " " + textLenght, canvas.width / 2, canvas.height / 2);
-        };
+        }
 
         function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight)
         {
@@ -117,13 +132,6 @@
                 }
             }
             context.fillText(line, marginLeft, marginTop);
-        }
-
-        function download()
-        {
-            link.href = canvas.toDataURL();
-            link.download = "mypainting.png";
-            document.body.appendChild(link);
         }
     }
 </script><canvas id=cnv width=450 height=450></canvas>
