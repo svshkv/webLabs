@@ -44,10 +44,7 @@
 			}    
 		};
 		//img.src = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=xml&lang=ru';
-		 array[0].onload = function() 
-		 {
-			
-		};
+
 		function run()
 		{
 			var ctx = document.getElementById('cnv').getContext('2d');
@@ -61,8 +58,37 @@
 			ctx.fillStyle = "red";
 			ctx.textBaseline = "middle";
 			//var text = "тут текст будет";
-			var textLenght = ctx.measureText(text);
-			ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+			var textLenght = ctx.measureText(text).width;
+			if (textLenght > 400) {
+				var countOfLines = ~~(textLenght / 400) + 1;
+			}
+			var lineHeight = 25;
+		    /*если мы знаем высоту текста, то мы можем
+		     предположить, что высота строки должна быть именно такой*/
+		    var marginLeft = canvas.width / 2;
+		    var marginTop = canvas.height / 2;
+			wrapText(ctx, text, marginLeft, marginTop, 400, lineHeight);
+			//ctx.fillText(countOfLines + " " + textLenght, canvas.width / 2, canvas.height / 2);
 		};
+
+	function wrapText(context, text, marginLeft, marginTop, maxWidth, lineHeight)
+    {
+        var words = text.split(" ");
+        var countWords = words.length;
+        var line = "";
+        for (var n = 0; n < countWords; n++) {
+            var testLine = line + words[n] + " ";
+            var testWidth = context.measureText(testLine).width;
+            if (testWidth > maxWidth) {
+                context.fillText(line, marginLeft, marginTop);
+                line = words[n] + " ";
+                marginTop += lineHeight;
+            }
+            else {
+                line = testLine;
+            }
+        }
+        context.fillText(line, marginLeft, marginTop);
+    }
 }
 </script><canvas id=cnv width=450 height=450></canvas>
