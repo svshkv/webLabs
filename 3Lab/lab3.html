@@ -5,31 +5,64 @@
 	window.onload = function() 
 	{
 		var img = new Image();
-		img.onload = function() 
-		{
+		var text = "1";
+		// img.onload = function() 
+		// {
+		// 	run()
+		// };
+		let url = 'https://example.com';
+
+		var apiUrl = null;
+		const http = new XMLHttpRequest()
+
+		http.open("GET", "https://cors.io/?https://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=json&lang=ru")
+		http.send()
+
+		http.onload = function() {
+			if (http.status != 200) {
+
+			} else {
+				text = JSON.parse(http.responseText);
+				text = text["quoteText"]
+			}
+			
 			run()
+		}
+		var rands = "jj ";
+		for( var image, array = [], i = 1; i <= 4; i++ ){
+			var rand = 1 - 0.5 + Math.random() * (73 - 1 + 1)
+    		rand = Math.round(rand);
+    		rands += " " + rand.toString();
+    		if (rand >= 10) {
+				image = new Image;
+		    	image.src = "https://ribalych.ru/wp-content/uploads/2017/12/krasota_0" + rand + ".jpg";
+		    	array.push( image );
+		    } else {
+				image = new Image;
+			   	image.src = "https://ribalych.ru/wp-content/uploads/2017/12/krasota_00" + rand + ".jpg";
+			   	array.push( image );
+			}    
 		};
-		img.src = '1pic.png';
-		var img2 = new Image();
-		var img3 = new Image();
-		var img4 = new Image();
-		img2.src = '2pic.png';
-		img3.src = '2pic.png';
-		img4.src = '1pic.png';
+		//img.src = 'http://api.forismatic.com/api/1.0/?method=getQuote&key=457653&format=xml&lang=ru';
+		 array[0].onload = function() 
+		 {
+			
+		};
 		function run()
 		{
 			var ctx = document.getElementById('cnv').getContext('2d');
-			ctx.drawImage(img, 0, 0);
-			ctx.drawImage(img2, img.width, 0);
-			ctx.drawImage(img3, 0, img.height);
-			ctx.drawImage(img4, img.width, img.height);
+			var canvas = document.getElementById('cnv');
+			ctx.drawImage(array[0], 0, 0, 225, 225);
+			ctx.drawImage(array[1], 225, 0, 225, 225);
+			ctx.drawImage(array[2], 0, 225, 225, 225);
+			ctx.drawImage(array[3], 225, 225, 225, 225);
 			ctx.textAlign = "center";
 			ctx.font = "20px Arial";
 			ctx.fillStyle = "red";
 			ctx.textBaseline = "middle";
-			var text = "тут текстs";
+			//var text = "тут текст будет";
 			var textLenght = ctx.measureText(text);
-			ctx.fillText(textLenght.width, img.width, img.height);
+			ctx.fillText(text, canvas.width / 2, canvas.height / 2);
 		};
 }
-</script><canvas id=cnv width=500 height=500></canvas>
+</script><canvas id=cnv width=450 height=450></canvas>
