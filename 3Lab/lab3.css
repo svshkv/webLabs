@@ -1,5 +1,22 @@
-button {
+a {
     background: #69c;
     color: #fff;
     padding: 5px 10px;
+    left: -300px;
+    position: relative;
+    top: 30px;
+}
+
+b {
+    background: #69c;
+    color: #fff;
+    padding: 5px 10px;
+    left: -100px;
+    position: relative;
+    top: 30px;
+}
+
+.canv {
+	position: relative;
+	left: 5px;
 }
