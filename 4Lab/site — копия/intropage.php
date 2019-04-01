@@ -5,28 +5,42 @@ if(!isset($_SESSION["session_username"])) {
 } else {
 ?>
 
-<?php require_once("includes/connection.php"); ?>
 <?php include("includes/header.php"); ?>
 
-<? 
-//$query =mysqli_query($con, "SELECT * FROM posttbl");
-//$message =  "'".$username."'";
+<?php
+// Соединяемся, выбираем базу данных
+$link = mysqli_connect('localhost', 'root', 'svshkvsvshkv')
+    or die('Не удалось соединиться: ' . mysql_error());
+//echo 'Соединение успешно установлено';
+mysqli_select_db($link, 'userlistdb') or die('Не удалось выбрать базу данных');
+
 // Выполняем SQL-запрос
-$result = mysqli_query($con, "SELECT * FROM posttbl") or die('Запрос не удался: ' . mysql_error());
+$query = 'SELECT * FROM posttbl';
+$result = mysqli_query($link, $query) or die('Запрос не удался: ' . mysql_error());
 
 // Выводим результаты в html
-echo "<table>\n";
+
 while ($line = mysqli_fetch_array($result)) {
-    echo "\t<tr>\n";
-    foreach ($line as $col_value) {
-        echo "\t\t<td>$col_value</td>\n";
-    }
-    echo "\t</tr>\n";
+    {
+
+    echo "<div id='welcome'>";
+	echo "<h3>".$line['headline']."</h3><br>";     
+	echo "<p>".$line['aid']."</p>";
+	echo "<p>".$line['date']."</p>";
+	echo "<p align=’right’>".$line['text']."</p></div>";
+  }
+
 }
-echo "</table>\n";
+
+
+// Освобождаем память от результата
+mysqli_free_result($result);
+
+// Закрываем соединение
+mysqli_close($link);
 ?>
-<div id="welcome">	
-	<h2>Welcome, <span><?php echo $_SESSION['session_username'];?>! </span></h2>
+<div id="logout">	
+	<p>Welcome, <span><?php echo $_SESSION['session_username'];?>! </span></p>
 	<p><a href="logout.php">Logout</a> Here!</p>
 </div>
 
