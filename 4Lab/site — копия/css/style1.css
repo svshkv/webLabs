@@ -46,8 +46,7 @@ span {
     top: 0px;
     right: 0px;
     left: 0px;
-    width: 97%;
-    padding: 20px;
+    width: 100%;
     background: #fff;
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
     -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
@@ -55,10 +54,10 @@ span {
 }
 
 #welcome {
-    width: 700px;
+    width: 70%;
     padding: 30px;
     background: #fff;
-    margin: 160px auto 0;
+    margin: 100px auto 0;
     -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
     -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
     box-shadow: 0 1px 3px rgba(0,0,0,.13);

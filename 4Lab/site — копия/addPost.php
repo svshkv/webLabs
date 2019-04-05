@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!isset($_SESSION["session_username"])) {
+	header("location:login.php");
+} else {
+?>
 <?php require_once("includes/connection.php"); ?>
 <?php
 
@@ -50,3 +56,6 @@ if(isset($_POST["addpost"])){
 	
 	</div>
 	</div>
+<?php
+}
+?>

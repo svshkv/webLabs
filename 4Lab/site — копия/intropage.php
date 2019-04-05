@@ -22,18 +22,23 @@ if(!isset($_SESSION["session_username"])) {
 	// Выводим результаты в html
 	$text = "12345";
 	$del = "deletePost.php";
-	while ($line = mysqli_fetch_array($result)) {
-	    {
-
-	    echo "<div id='welcome'>";
-		echo "<h3>".$line['headline']."</h3><br>";     
-		echo "<p>".$line['postDate']."</p>";
-		echo "<p align=’right’>".$line['body']."</p>";
-		echo "<a href='deletePost.php?pid=".$line['pid']."'>Удалить</a></div>";
-
-	  }
-
+	if ($_SESSION["session_username"] == "test1") {
+		while ($line = mysqli_fetch_array($result)) {
+		    echo "<div id='welcome'>";
+			echo "<h3>".$line['headline']."</h3><br>";     
+			echo "<p>".$line['postDate']."</p>";
+			echo "<p align=’right’>".$line['body']."</p>";
+			echo "<a href='deletePost.php?pid=".$line['pid']."'>Удалить</a></div>";
+		}
+	} else {
+		while ($line = mysqli_fetch_array($result)) {
+		    echo "<div id='welcome'>";
+			echo "<h3>".$line['headline']."</h3><br>";     
+			echo "<p>".$line['postDate']."</p>";
+			echo "<p align=’right’>".$line['body']."</p></div>";
+		}
 	}
+
 
 
 	// Освобождаем память от результата
