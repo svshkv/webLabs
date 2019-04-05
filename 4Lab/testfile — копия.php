@@ -10,14 +10,17 @@ $query = 'SELECT * FROM posttbl';
 $result = mysqli_query($link, $query) or die('Запрос не удался: ' . mysql_error());
 
 // Выводим результаты в html
-echo "<table border = 1>\n";
+
 while ($line = mysqli_fetch_array($result)) {
     {
-    echo "<tr><td>".$line['pid']."&nbsp;</td><td>".$line['aid']."
-    &nbsp </td><td>".$line['text']."&nbsp;</td><td>".  
-    $line['headline']."&nbsp;</td></tr>";
+
+    echo "<div class='doc_sp'>";
+	echo "<h3>".$line['pid']."</h3><br>";     
+	echo "<p>".$line['aid']."</p>";
+	echo "<p align=’right’>".$line['text']."</p></div>";
+	echo "<p align=’right’>".$line['headline']."</p></div>";
   }
-  echo "</table>";
+
 }
 
 

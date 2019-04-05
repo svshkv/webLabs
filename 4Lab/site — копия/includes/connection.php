@@ -1,4 +1,3 @@
-
 <?php
 require("constants.php");
 
@@ -10,4 +9,4 @@ if (!$con) {
     echo "Текст ошибки error: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
-	?>
+?>

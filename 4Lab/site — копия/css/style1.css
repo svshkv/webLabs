@@ -23,13 +23,52 @@ span {
     color: #f58220;
 }
 
+
+.rightstr {
+    width: 50%;
+    text-align: right; 
+    float: left; /* Выравнивание по правому краю */ 
+}
+
+.leftstr {
+    width: 50%; 
+    text-align: left; 
+    float: left;
+}
+
+#delBut {
+    right: 10px;
+    top: 10px;
+}
+
+#menu {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    width: 97%;
+    padding: 20px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+
+#welcome {
+    width: 700px;
+    padding: 30px;
+    background: #fff;
+    margin: 160px auto 0;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+
 #logout {
-    position: fixed; /* Фиксированное положение */
     right: 10px; /* Расстояние от правого края окна браузера */
     top: 20%; /* Расстояние сверху */
     padding: 10px; /* Поля вокруг текста */ 
-    background: #ffe; /* Цвет фона */ 
-    border: 1px solid #333; /* Параметры рамки */ 
+
 }
 
 .mlogin {
@@ -70,15 +109,7 @@ span {
     box-shadow: 0 1px 3px rgba(0,0,0,.13);
 }
 
-#welcome {
-    width: 500px;
-    padding: 30px;
-    background: #fff;
-    margin: 160px auto 0;
-    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
-    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
-    box-shadow: 0 1px 3px rgba(0,0,0,.13);
-}
+
 
 .container h1 {
     color: #777;
@@ -123,11 +154,11 @@ span {
 
 .button{
 border: solid 1px #da7c0c;
-    background: #f78d1d;
-    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
-    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
-    color: #fff;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+	color: #fff;
 padding: 7px 12px;
 -webkit-border-radius:4px;
    -moz-border-radius:4px;
@@ -139,9 +170,9 @@ cursor: pointer;
 
 .button:hover{
 background: #f47c20;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
-    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
 }
 
 

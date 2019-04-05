@@ -7,39 +7,39 @@
 if(isset($_POST["register"])){
 
 
-if(!empty($_POST['full_name']) && !empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['password'])) {
-	$full_name=$_POST['full_name'];
-	$email=$_POST['email'];
-	$username=$_POST['username'];
-	$password=$_POST['password'];
-	
-
+	if(!empty($_POST['full_name']) && !empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['password'])) {
+		$full_name=$_POST['full_name'];
+		$email=$_POST['email'];
+		$username=$_POST['username'];
+		$password=$_POST['password'];
 		
-	$query=mysqli_query($con, "SELECT * FROM usertbl WHERE username='".$username."'");
-	$numrows=mysqli_num_rows($query);
-	
-	if($numrows==0)
-	{
-	$sql="INSERT INTO usertbl
-			(full_name, email, username,password) 
-			VALUES('$full_name','$email', '$username', '$password')";
 
-	$result=mysqli_query($con, $sql);
+			
+		$query=mysqli_query($con, "SELECT * FROM usertbl WHERE username='".$username."'");
+		$numrows=mysqli_num_rows($query);
+		
+		if($numrows==0)
+		{
+		$sql="INSERT INTO usertbl
+				(full_name, email, username,password) 
+				VALUES('$full_name','$email', '$username', '$password')";
+
+		$result=mysqli_query($con, $sql);
 
 
-	if($result){
-	 $message = "Account Successfully Created";
+		if($result){
+		 $message = "Account Successfully Created";
+		} else {
+		 $message = "Failed to insert data information!";
+		}
+
+		} else {
+		 $message = "That username already exists! Please try another one!";
+		}
+
 	} else {
-	 $message = "Failed to insert data information!";
+		 $message = "All fields are required!";
 	}
-
-	} else {
-	 $message = "That username already exists! Please try another one!";
-	}
-
-} else {
-	 $message = "All fields are required!";
-}
 }
 ?>
 
